@@ -1,0 +1,413 @@
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role='list'],
+ol[role='list'] {
+  list-style: none;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+   scroll-behavior: auto;
+  }
+  
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+:root{
+  --isticanje: rgb(35, 166, 213);
+  --navbarPozadina: rgba(35, 165, 213, 0.425);
+  --pozadina: white;
+  --visinaKartice: 250px;
+}
+*{
+  font-family: 'Roboto', sans-serif;
+}
+body{
+  width: 99vw;
+  height: 100vh;
+  display: block;/*
+  background: linear-gradient(-47deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradient 300s ease-in-out infinite;*/
+}/*
+@keyframes gradient {
+  0% {
+      background-position: 0% 53%;
+  }
+  25%{
+      background-position: 50% 55%;
+  }
+  50% {
+      background-position: 99% 50%;
+  }
+  75%{
+      background-position: 58% 54%;
+  }
+  100% {
+      background-position: 0% 54%;
+  }
+}*/
+*{
+  box-sizing: border-box;
+}
+header{
+  z-index: 1;
+  width: 3.5%;
+  height: 99%;
+  position: fixed;
+  top: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: var(--pozadina);
+  font-family: 'Roboto', sans-serif;
+  box-shadow: 5px 12px 38px rgba(63, 63, 63, 0.315);
+  border-radius: 0 7px 7px 0;
+}
+nav{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  align-items: flex-start;
+  justify-content: center;
+  top: 3px;
+  text-align: center;
+  padding-bottom: 5px;
+}
+
+nav div{
+  position: relative;
+  left: 0;
+  width: 90%;
+  height: 90%;
+  border-radius: 0 5px 5px 0;
+  background: transparent;
+  transition: width 0.3s ease-in-out;
+}
+nav div:hover{
+  width: 110%;
+  height: 90%;
+  background: var(--navbarPozadina);
+  color: var(--pozadina);
+}
+nav div.otvoreno{
+  width: 110%;
+  background: var(--navbarPozadina);
+}
+#userUpload{
+  position: relative;
+  width: 50px;
+  height: 50px;
+  background-size: cover;
+  border-radius: 50%;
+}
+
+.uil{
+  color: var(--isticanje);
+  padding: 0 1% 0 1%;
+}
+header .uil{
+  color: var(--isticanje);
+  width: 80px;
+  height: 80px;
+  font-size: 2.5em;
+  padding: 0 1% 0 1%;
+}
+main{
+  position: relative;
+  float: right;
+  display: flex;
+  top: 5px;
+  max-width: 96%;
+  min-height: 99%;
+  justify-content: space-between;
+  align-items: flex-start;
+  background: var(--pozadina);
+  border-radius: 7px;
+  z-index: 2;
+  animation: polazak 0.3s ease-in-out;
+}
+@keyframes polazak {
+  from{
+    filter: opacity(0);
+    right: -20vw;
+  }
+  to{
+    filter: opacity(100);
+    right: 0;
+  }
+}
+main .popisGrupa, .Ostalo, .Nedavno, .karticaZadatka{
+  background: rgba(255, 255, 255, 0.59);
+  box-shadow: 5px 7px 30px rgba(88, 83, 83, 0.137);
+  backdrop-filter: blur(10.2px);
+  -webkit-backdrop-filter: blur(10.2px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 7px;
+  margin: 3px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 0.5%;
+}
+main .popisGrupa, .Ostalo{
+  width: 25%;
+  height: auto;
+}
+main  .Nedavno{
+  width: 55%;
+  min-height: max-content;
+}
+#probnaGrupa .Nedavno{
+  width: 75%;
+}
+.karticaZadatka{
+  position: relative;
+  width: 99%;
+  height: var(--visinaKartice);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  margin-bottom: 2%;
+  transition: height 0.3s ease-in-out;
+}
+.karticaZadatka .ikona_ime_kartica, .opis_kartica, .gumbi_kartica{
+  margin: 5px;
+}
+.karticaZadatka .ikona_ime_kartica{
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row;
+  width: 99%;
+  height: 20%;
+}
+.ikona_ime_kartica p{
+  position: inherit;
+  padding: 2%;
+  box-shadow: 5px 7px 30px rgba(88, 83, 83, 0.137);
+  width: 94%;
+  border-radius: 7px;
+}
+.ikona_ime_kartica .uil{
+  color: var(--isticanje);
+  width: 80px;
+  height: 80px;
+  font-size: 2.5em;
+  padding: 0 1% 0 1%;
+}
+.karticaZadatka .opis_kartica{
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  width: 99%;
+  height: 40%;
+}
+.opis_kartica p{
+  padding: 2%;
+  overflow-y: scroll;
+}
+.karticaZadatka .gumbi_kartica{
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  align-items: baseline;
+  flex-direction: row;
+  width: 99%;
+  height: 12%;
+}
+.gumbi_kartica .prosiri{
+  position: relative;
+  font-size: 1.5rem;
+  transition: transform 0.2s ease-in-out;
+}
+.gumbi_kartica .prosiri:hover{
+  transform: translateY(3px);
+  color: var(--isticanje);
+}
+.gumbi_kartica .od, .do{
+  padding: 0 2% 0 2%;
+  font-size: small;
+}
+.gumb_vise{
+  padding: 0 1% 0 1%;
+  transition: transform 0.1s ease-in-out;
+}
+.gumb_vise:hover{
+  transform: scale(150%);
+  color: var(--isticanje);
+}
+.gumb_otvori{
+  width: 8%;
+  height: 90%;
+  border-radius: 5px;
+  border: 1px solid var(--isticanje);
+  background-color: var(--isticanje);
+  text-align: center;
+  color: white;
+}
+.gumb_otvori:hover{
+  border: 1px solid var(--isticanje);
+  background-color: transparent;
+  color: var(--isticanje);
+}
+.Ostalo .pretrazi{
+  box-shadow: 5px 7px 30px rgba(88, 83, 83, 0.137);
+  border-radius: 7px;
+  margin: 3px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: baseline;
+  width: 99%;
+  height: auto;
+}
+.pretrazi #pretrazi{
+  background-color: white;
+  border-radius: 7px;
+  margin: 3px;
+  width: 90%;
+  border: none;
+  color: var(--isticanje);
+}
+#pretrazi:focus{
+  outline: none;
+  border-bottom: 1px solid var(--isticanje);
+}
+.pretrazi .uli-search{
+  color: var(--isticanje);
+  position: relative;
+  font-size: 3rem;
+}
+.biljeska{
+  width: 99%;
+}
+.biljeska section{
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-direction: row;
+  margin: 5px;
+  height: auto;
+}
+.bilješke{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.biljeska .uli{
+  width: 20px;
+  height: 20px;
+}
+.note{
+  position: inherit;
+  outline: none;
+  border-bottom: 1px solid gray;
+  border: none;
+  border-radius: 7px;
+  margin: 5px;
+  height: 40%;
+  width: 99%;
+  background-color: var(--navbarPozadina);
+  resize: none;
+}
+.note:focus{
+  border-bottom: 1px solid var(--isticanje);
+}
+.uli:hover{
+  color: var(--isticanje);
+}
+.porukicaZaSpremanje{
+  float: right;
+  padding: 2px;
+  color: gray;
+  font-size: small;
+}
+footer{
+  position: relative; 
+  float: right;
+  display: flex;
+  width: 96%;
+  height: 20%;
+background: rgba(255, 255, 255, 0.59);
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(10.2px);
+-webkit-backdrop-filter: blur(10.2px);
+border: 1px solid rgba(255, 255, 255, 0.3);
+  margin-top: 1.5%;
+  bottom: 5px;
+  border-radius: 7px;
+}
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-thumb {
+  background: #a1a7a7b0; 
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #222121cc; 
+  width: 6px;
+}
